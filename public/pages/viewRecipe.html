@@ -1,0 +1,73 @@
+<div class="page-header">
+  <h1>&nbsp{{recipe.title}}</h1>
+</div>
+
+<div class="col-lg-5">
+<div class="panel panel-default">
+  <div class="panel-heading">Prep Time</div>
+  <div class="panel-body">    
+      {{recipe.prep_time}} minutes
+  </div>
+</div>
+</div>
+
+
+<div class="col-lg-5">
+<div class="panel panel-default">
+  <div class="panel-heading">Cook Time</div>
+  <div class="panel-body"> 
+      {{recipe.cook_time}} minutes
+  </div>
+</div>
+</div>
+
+
+<div class="col-md-10" style="margin-left:auto; margin-right:auto;">
+  <div class="panel panel-default">
+    <div class="panel-heading">Instruction</div>
+      <div class="panel-body">
+        {{recipe.instructions}}
+      </div>
+  </div>
+</div>
+
+<div class="col-md-12">
+<a href="http://{{recipe.url}}">{{recipe.url}}</a>
+</div>
+
+<table class="table table-striped">
+      <thead>
+        <tr>
+          <th>
+            Ingredient
+          </th>
+          <th>
+            Quantity
+          </th>
+          <th>
+            Unit
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="my-repeat-animation"  ng-repeat="ingredient in recipe.ingredients">
+          <td >
+            {{ingredient.name}}
+          </td>
+          <td >
+            {{ingredient.quantity}}
+          </td>
+          <td >
+            {{ingredient.units}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+  <div class="col-md-6"><a href="#view"><button type="button" class="btn btn-default btn-lg">
+      Return to All
+    </button></a></div>
+
+      <div class="col-md-6"><a href="#add"><button type="button" class="btn btn-default btn-lg">
+      Edit Recipe
+    </button></a></div>

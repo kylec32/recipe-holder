@@ -1,0 +1,16 @@
+{
+  "name": "recipeholder",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Kyle Carter",
+  "dependencies": {
+    "body-parser": "~1.0.1",
+    "express": "~4.0.0",
+    "jsonwebtoken": "^5.0.2",
+    "mongoose": "^4.0.8",
+    "morgan": "~1.0.0",
+    "nodemon": "^1.3.7"
+  }
+}
