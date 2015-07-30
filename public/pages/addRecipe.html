@@ -1,1 +1,176 @@
-This is the add recipe view 
+<style>
+.modal {
+  display: block;
+}
+
+.modal-body:before,
+  .modal-body:after {
+    display: table;
+    content: " ";
+}
+
+.modal-header:before,
+.modal-header:after {
+  display: table;
+  content: " ";
+}
+.rating {
+    color: #a9a9a9;
+    margin: 0;
+    padding: 0;
+}
+ul.rating {
+    display: inline-block;
+}
+.rating li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 1px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+.rating .filled {
+    color: red;
+}
+
+</style>
+
+<script type="text/ng-template" id="myModalContent.html">
+      
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 class="modal-title">Are you sure you want to delete?</h3>
+    </div>
+    <div class="modal-body">
+     <button class="btn btn-lg btn-danger btn-block" ng-click="delete()" >Yes</button>
+     <button class="btn btn-lg btn-primary btn-block" ng-click="close()" >No</button>
+    </div>
+  </div>
+  </div>
+    
+</script>
+
+<script type="text/ng-template" id="ingredientImport.html">
+      
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 class="modal-title">Please Copy In Ingredient List</h3>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <textarea class="form-control" rows="10" ng-model="importIngredients.data"></textarea>
+     </div>
+     <button class="btn btn-lg btn-danger btn-block" ng-click="import()" >Import</button>
+     <button class="btn btn-lg btn-primary btn-block" ng-click="close()" >Cancel</button>
+    </div>
+  </div>
+  </div>
+    
+</script>
+
+<div class="page-header">
+  <h1>&nbsp{{title}}</h1>
+</div>
+
+<div class="col-lg-6"> 
+      <div class="form-group">
+          <label for="title">Title</label>
+          <input id="title" type="text" class="form-control" ng-model="recipe.title">
+      </div>
+</div>
+
+<div class="col-lg-6">    
+      <div class="form-group">
+        <label for="prep_time">Prep Time</label>
+        <input id="prep_time" type="text" class="form-control" placeholder="Time in Minutes" ng-model="recipe.prep_time">
+      </div>
+</div>
+
+
+<div class="col-lg-6">
+      <div class="form-group">
+        <label for="cook_time">Cook Time</label>
+          <input id="cook_time" type="text" class="form-control" placeholder="Time in Minutes" ng-model="recipe.cook_time">
+      </div>
+</div>
+
+
+
+
+<div class="col-md-6">
+<div class="form-group">
+  <label for="url">URL</label>
+  <input id="url" type="text" class="form-control" placeholder="URL" ng-model="recipe.url">
+</div>
+</div>
+<div class="col-md-6">
+        <div class="form-group">
+          <label for="category">Category</label>
+          <input id="category" type="text" class="form-control" ng-model="recipe.category">
+      </div>
+</div>
+
+<div class="col-md-6">
+  <label for="rating">Rating</label>
+      <div id="rating" star-rating rating-value="recipe" max="5"></div>
+</div>
+
+<div class="col-md-6">
+        <div class="form-group">
+          <label for="instructions">Instructions</label>
+          <textarea id="instructions" class="form-control" rows="5" ng-model="recipe.instructions"></textarea>
+      </div>
+</div>
+<table class="table table-striped">
+      <thead>
+        <tr>
+          <th>
+            Quantity
+          </th>
+          <th>
+            Unit
+          </th>
+          <th>
+            Ingredient
+          </th>
+          <th>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="my-repeat-animation"  ng-repeat="ingredient in recipe.ingredients">
+          <td >
+            <div class="form-group">
+              <input type="text" class="form-control" ng-model="ingredient.quantity">
+            </div>
+          </td>
+          <td >
+            <div class="form-group">
+              <input type="text" class="form-control" ng-model="ingredient.units">
+            </div>
+          </td>
+          <td >
+            <div class="form-group">
+              <input type="text" class="form-control" ng-model="ingredient.name">
+            </div>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger btn-lg" ng-click="deleteIngredient(ingredient)">X</button>
+          </td>
+        </tr>
+        <tr><td colspan="2"><a ng-click="addIngredient()"><button type="button" class="btn btn-default btn-lg">
+      Add Ingredient
+    </button></a></td><td colspan="2"><button type="button" class="btn btn-default btn-lg" ng-click="importIngs()">Ingredient Import</button></td></tr>
+      </tbody>
+    </table>
+    <br/>
+  <div class="col-md-6"><a href="#view"><button type="button" class="btn btn-default btn-lg">
+      Return to All
+    </button></a></div>
+
+      <div class="col-md-6"><a ng-click="saveRecipe()"><button type="button" class="btn btn-default btn-lg">
+      Save Recipe
+    </button></a></div>

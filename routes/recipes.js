@@ -6,9 +6,15 @@ var Recipe = require('../models/Recipe.js');
 
 /* GET /recipes listing. */
 router.get('/', function(req, res, next) {
-  Recipe.find(function (err, recipes) {
+  Recipe.find('title, url, prep_time, cook_time, instructions, ingredients',function (err, recipes) {
     if (err) return next(err);
-    res.json(recipes);
+    var currentRecipes = [];
+    for(var i=0; i<recipes.length; i++){
+      if(!recipes[i].deleted){
+        currentRecipes.push(recipes[i]);
+      }
+    }
+    res.json(currentRecipes);
   });
 });
 
@@ -34,7 +40,8 @@ router.put('/:id', function(req, res, next) {
 });
 
 router.delete('/:id', function(req, res, next) {
-  Recipe.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+  req.body.deleted = "true";
+  Recipe.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });

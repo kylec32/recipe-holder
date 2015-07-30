@@ -151,16 +151,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, $http) {
   $scope.password = "";
 
   $scope.login = function () {
-    // console.log($scope.username, $scope.password);
-    $http.post('/api/auth', {
-      username: $scope.username,
-      password: $scope.password
-    }).
-    success(function(data, status, headers, config) {
-      $modalInstance.close(data.token);
-    }).
-    error(function(data, status, headers, config) {
-      $scope.message = "Invalid username or password";
-    });
-  };
+    
+      $modalInstance.close();
+    }
 });

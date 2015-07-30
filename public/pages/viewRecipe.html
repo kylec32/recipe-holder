@@ -1,39 +1,73 @@
+<style>
+
+.rating {
+    color: #a9a9a9;
+    margin: 0;
+    padding: 0;
+}
+ul.rating {
+    display: inline-block;
+}
+.rating li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 1px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+.rating .filled {
+    color: red;
+}
+
+</style>
+
 <div class="page-header">
   <h1>&nbsp{{recipe.title}}</h1>
 </div>
 
-<div class="col-lg-5">
-<div class="panel panel-default">
-  <div class="panel-heading">Prep Time</div>
-  <div class="panel-body">    
-      {{recipe.prep_time}} minutes
-  </div>
-</div>
+
+<div class="col-lg-6">
+    <label for="preptime">Prep Time</label>
+    <div id="preptime">    
+        {{recipe.prep_time}} minutes
+    </div>
 </div>
 
 
-<div class="col-lg-5">
-<div class="panel panel-default">
-  <div class="panel-heading">Cook Time</div>
-  <div class="panel-body"> 
+<div class="col-lg-6">
+  <label for="cooktime">Cook Time</label>
+  <div id="cooktime">    
       {{recipe.cook_time}} minutes
   </div>
 </div>
+
+
+<div class="col-md-6">
+
+  <label for="rating">Rating</label>
+      <div id="rating" star-rating rating-value="recipe" max="rating.max" on-rating-selected="getSelectedRating(rating)" readonly="true"></div>
 </div>
 
-
-<div class="col-md-10" style="margin-left:auto; margin-right:auto;">
-  <div class="panel panel-default">
-    <div class="panel-heading">Instruction</div>
-      <div class="panel-body">
-        {{recipe.instructions}}
-      </div>
+<div class="col-md-6">
+  <label for="url">URL:</label>
+  <div id="url"><a href="http://{{recipe.url}}">{{recipe.url}}</a></div>
+</div>
+<div class="col-md-6">
+  <label for="category">Category</label>
+  <div id="category">    
+      {{recipe.category}}
   </div>
 </div>
 
 <div class="col-md-12">
-<a href="http://{{recipe.url}}">{{recipe.url}}</a>
+  <label for="instructions">Instructions</label>
+  <div id="instructions">    
+      {{recipe.instructions}}
+  </div>
 </div>
+
+<br/>
 
 <table class="table table-striped">
       <thead>
@@ -68,6 +102,6 @@
       Return to All
     </button></a></div>
 
-      <div class="col-md-6"><a href="#add"><button type="button" class="btn btn-default btn-lg">
+      <div class="col-md-6"><a ng-click="editRecipe(recipe)"><button type="button" class="btn btn-default btn-lg">
       Edit Recipe
     </button></a></div>

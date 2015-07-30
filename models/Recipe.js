@@ -12,6 +12,8 @@ var RecipeSchema = new mongoose.Schema({
   prep_time:String,
   cook_time:String,
   instructions:String,
+  deleted:{type:Boolean, default:false},
+  rating:Number, 
   ingredients:[IngredientSchema]
 });
 
