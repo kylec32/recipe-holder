@@ -73,26 +73,26 @@ ul.rating {
       <thead>
         <tr>
           <th>
-            Ingredient
-          </th>
-          <th>
             Quantity
           </th>
           <th>
             Unit
+          </th>
+          <th>
+            Ingredient
           </th>
         </tr>
       </thead>
       <tbody>
         <tr class="my-repeat-animation"  ng-repeat="ingredient in recipe.ingredients">
           <td >
-            {{ingredient.name}}
-          </td>
-          <td >
             {{ingredient.quantity}}
           </td>
           <td >
             {{ingredient.units}}
+          </td>
+          <td >
+            {{ingredient.name}}
           </td>
         </tr>
       </tbody>
