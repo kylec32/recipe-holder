@@ -75,14 +75,14 @@ ul.rating {
   <h1>&nbsp{{title}}</h1>
 </div>
 
-<div class="col-lg-6"> 
+<div class="col-sm-6"> 
       <div class="form-group">
           <label for="title">Title</label>
-          <input id="title" type="text" class="form-control" ng-model="recipe.title">
+          <input id="title" placeholder="My awesome recipe" type="text" class="form-control" ng-model="recipe.title">
       </div>
 </div>
 
-<div class="col-lg-6">    
+<div class="col-sm-6">    
       <div class="form-group">
         <label for="prep_time">Prep Time</label>
         <input id="prep_time" type="text" class="form-control" placeholder="Time in Minutes" ng-model="recipe.prep_time">
@@ -90,7 +90,7 @@ ul.rating {
 </div>
 
 
-<div class="col-lg-6">
+<div class="col-sm-6">
       <div class="form-group">
         <label for="cook_time">Cook Time</label>
           <input id="cook_time" type="text" class="form-control" placeholder="Time in Minutes" ng-model="recipe.cook_time">
@@ -98,30 +98,28 @@ ul.rating {
 </div>
 
 
-
-
-<div class="col-md-6">
+<div class="col-sm-6">
 <div class="form-group">
   <label for="url">URL</label>
   <input id="url" type="text" class="form-control" placeholder="URL" ng-model="recipe.url">
 </div>
 </div>
-<div class="col-md-6">
+<div class="col-sm-6">
         <div class="form-group">
           <label for="category">Category</label>
-          <input id="category" type="text" class="form-control" ng-model="recipe.category">
+          <input id="category" placeholder="Breakfast, Lunch, Dinner, Desert, Heart-burn Inducing, etc." type="text" class="form-control" ng-model="recipe.category">
       </div>
 </div>
 
-<div class="col-md-6">
+<div class="col-sm-6">
   <label for="rating">Rating</label>
       <div id="rating" star-rating rating-value="recipe" max="5"></div>
 </div>
 
-<div class="col-md-6">
+<div class="col-sm-11">
         <div class="form-group">
           <label for="instructions">Instructions</label>
-          <textarea id="instructions" class="form-control" rows="5" ng-model="recipe.instructions"></textarea>
+          <textarea id="instructions" class="form-control" placeholder="Tell us how to make this awesome meal..." rows="5" ng-model="recipe.instructions"></textarea>
       </div>
 </div>
 <table class="table table-striped">
@@ -171,6 +169,6 @@ ul.rating {
       Return to All
     </button></a></div>
 
-      <div class="col-md-6"><a ng-click="saveRecipe()"><button type="button" class="btn btn-default btn-lg">
+  <div class="col-md-6"><a ng-click="saveRecipe()"><button type="button" class="btn btn-default btn-lg">
       Save Recipe
-    </button></a></div>
+  </button></a></div>

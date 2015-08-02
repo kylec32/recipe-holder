@@ -152,11 +152,9 @@
 
 	app.controller('viewRecipesController', function($scope,$http,$location,$log,$modal) {
 
-
 		$scope.delOption = {};
 
-
-		$scope.recipes = [{title:"Title 1",url:"example.com",prep_time:"30",cook_time:"25",instructions:"These are instruction"},{title:"Title 2",url:"exampl2.com",prep_time:"50",cook_time:"35",instructions:"These are instructio2"}];
+		$scope.recipes = [];
 	
 		 $http.get("/api/recipes").
 		    success(function(data, status, headers, config) {
