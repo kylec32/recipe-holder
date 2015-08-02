@@ -155,6 +155,7 @@
 		$scope.delOption = {};
 
 		$scope.recipes = [];
+		$scope.categories = ["No Filter"];
 	
 		 $http.get("/api/recipes").
 		    success(function(data, status, headers, config) {
@@ -162,6 +163,34 @@
 		        $scope.recipes.push(data);
 		      })
 		    });
+		$http.get("/api/categories").
+			success(function(data,status,headers,config) {
+				data.forEach(function(data) {
+					$scope.categories.push(data);
+				});
+			});
+
+		$scope.filterCategory = function(category) {
+			$scope.recipes = [];
+			if(category == "No Filter") {
+				 $http.get("/api/recipes").
+				    success(function(data, status, headers, config) {
+				      data.forEach(function(data) {
+				        $scope.recipes.push(data);
+				      })
+				 });
+			}
+			else {
+				var searchCriteria = {};
+				searchCriteria.category = category;
+				$http.post("/api/search",searchCriteria).
+					success(function(data,status,headers,config) {
+						data.forEach(function(data) {
+				        	$scope.recipes.push(data);
+				      	});
+					});
+			}
+		};
 
 		$scope.go = function(recipe) {
 

@@ -47,7 +47,11 @@ app.use(bodyParser.json());
 var router = express.Router();
 
 var recipes = require('./routes/recipes');
+var categories = require('./routes/categories');
+var search = require('./routes/search');
 app.use('/api/recipes',recipes);
+app.use('/api/categories',categories);
+app.use('/api/search',search);
 
 router.get('/', function(req, res) {
   res.json({

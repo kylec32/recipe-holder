@@ -62,6 +62,20 @@
 
     </script>
 
+<div class="col-md-1">
+  <table class="table">
+    <thead><tr><td>Category</td></tr></thead>
+    <tbody>
+      <tr class="my-repeat-animation" ng-repeat="category in categories">
+        <td ng-click="filterCategory(category)">
+          {{category}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col-md-11">
 <table class="table table-striped">
       <thead>
         <tr>
@@ -93,6 +107,7 @@
         </tr>
       </tbody>
     </table>
+  </div>
 <br/>
 
 

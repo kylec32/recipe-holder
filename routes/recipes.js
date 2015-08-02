@@ -6,15 +6,10 @@ var Recipe = require('../models/Recipe.js');
 
 /* GET /recipes listing. */
 router.get('/', function(req, res, next) {
-  Recipe.find('title, url, prep_time, cook_time, instructions, ingredients',function (err, recipes) {
+  Recipe.find().where('deleted').equals(false).exec(function(err,recipes) {
     if (err) return next(err);
-    var currentRecipes = [];
-    for(var i=0; i<recipes.length; i++){
-      if(!recipes[i].deleted){
-        currentRecipes.push(recipes[i]);
-      }
-    }
-    res.json(currentRecipes);
+
+    res.json(recipes);
   });
 });
 
