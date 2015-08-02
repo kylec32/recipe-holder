@@ -62,8 +62,8 @@ ul.rating {
 <br/>
 <div class="col-md-11">
   <label for="instructions">Instructions</label>
-  <div id="instructions">    
-      {{recipe.instructions}}
+  <div id="instructions" ng-bind-html="recipe.instructions| unsafe">    
+      
   </div>
 </div>
 

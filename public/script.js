@@ -208,6 +208,27 @@
 		  };
 	});
 
+	app.filter('unsafe', function($sce) {
+	    return function(val) {
+	        return $sce.trustAsHtml(val);
+	    };
+	});
+
+
+	function nl2br(content){
+		var convertedContent = '';
+		for(var i=0; i<content.length; i++){
+			if(content.charCodeAt(i) == 10){
+				convertedContent += "<br/>";
+			}
+			else{
+				convertedContent += content[i];
+			}
+		}
+
+		return convertedContent;
+	}
+
 	app.controller('viewRecipeController', function($scope,$http,$location,$routeParams) {
 	
 		$scope.recipe = {};
@@ -215,11 +236,14 @@
 		 $http.get("/api/recipes/"+$routeParams.id).
 		    success(function(data, status, headers, config) {
 		      console.log(data);
+		      /*for(var i=0; i<data.instructions.length; i++){
+		      	console.log(data.instructions[i] + ' is ' + data.instructions.charCodeAt(i));
+		      }*/
 		      $scope.recipe = data;
+		      $scope.recipe.instructions = nl2br($scope.recipe.instructions);
 		    });
 
 		$scope.editRecipe = function(editRecipe){
-			console.log(editRecipe);
 			$location.url("/add/"+editRecipe._id);
 		};
 
