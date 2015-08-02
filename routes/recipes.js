@@ -33,6 +33,7 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.put('/:id', function(req, res, next) {
+  delete req.body._id;
   Recipe.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
