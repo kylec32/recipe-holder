@@ -18,7 +18,7 @@
 
 <div class="col-md-6">
   <label for="rating">Rating</label>
-  <div id="rating" star-rating rating-value="recipe" max="5" on-rating-selected="getSelectedRating(rating)" readonly="true"></div>
+  <star-rating id="rating" rating-value="recipe" max="5" readonly="true"></star-rating>
 </div>
 
 <div class="col-md-6">
@@ -44,34 +44,36 @@
 
 <br/>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>
-        Quantity
-      </th>
-      <th>
-        Unit
-      </th>
-      <th>
-        Ingredient
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="my-repeat-animation"  ng-repeat="ingredient in recipe.ingredients">
-      <td >
-        {{ingredient.quantity}}
-      </td>
-      <td >
-        {{ingredient.units}}
-      </td>
-      <td >
-        {{ingredient.name}}
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="col-sm-12">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>
+          Quantity
+        </th>
+        <th>
+          Unit
+        </th>
+        <th>
+          Ingredient
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="my-repeat-animation"  ng-repeat="ingredient in recipe.ingredients">
+        <td >
+          {{ingredient.quantity}}
+        </td>
+        <td >
+          {{ingredient.units}}
+        </td>
+        <td >
+          {{ingredient.name}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <br/>
 

@@ -71,7 +71,7 @@
 
 <div class="col-sm-6">
   <label for="rating">Rating</label>
-    <div id="rating" star-rating rating-value="recipe" max="5"></div>
+    <star-rating id="rating" rating-value="recipe" max="5"></star-rating>
 </div>
 
 <div class="col-sm-11">
@@ -115,7 +115,9 @@
         </div>
       </td>
       <td>
-        <button type="button" class="btn btn-danger btn-lg" ng-click="deleteIngredient(ingredient)">X</button>
+        <button type="button" class="btn btn-danger btn-lg" ng-click="deleteIngredient(ingredient)">
+          <i class="fa fa-trash"></i>
+        </button>
       </td>
     </tr>
     <tr>
