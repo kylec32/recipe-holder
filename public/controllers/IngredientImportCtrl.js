@@ -7,7 +7,7 @@
 			var currentIngredient = lines[i];
 			var element = {};
 			element.quantity = lines[i].match(/\S+/)[0];
-			element.units = lines[i].match(/teaspoons|teaspoon|tablespoons|tablespoon|tsps|tsp|Tsps|Tsp|cups|cup|pounds|pound|ibs|ib/) == null ? "" : lines[i].match(/teaspoons|teaspoon|tablespoons|tablespoon|tsps|tsp|Tsps|Tsp|cups|cup|pounds|pound|ibs|ib/)[0];
+			element.units = lines[i].match(/teaspoons|teaspoon|tablespoons|tablespoon|tsps|tsp|Tsps|Tsp|cups|cup|pounds|pound|ibs|ib/) === null ? "" : lines[i].match(/teaspoons|teaspoon|tablespoons|tablespoon|tsps|tsp|Tsps|Tsp|cups|cup|pounds|pound|ibs|ib/)[0];
 			element.name = currentIngredient.replace(element.units,'').replace(element.quantity,'').trim();
 			ingredientLists.push(element);
 		}
@@ -21,7 +21,7 @@
 		$scope.import = function() {
 			var response = ingredientsArray($scope.importIngredients.data);
 			$modalInstance.close(response);
-		}
+		};
 
 		$scope.close = function () {
 			$modalInstance.dismiss('cancel');

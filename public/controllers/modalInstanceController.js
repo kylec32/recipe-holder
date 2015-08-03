@@ -3,7 +3,7 @@
 
 		$scope.delete = function() {
 			$modalInstance.close($scope.delOption);
-		}
+		};
 
 		$scope.close = function () {
 		$modalInstance.dismiss('cancel');

@@ -10,7 +10,7 @@
 		    success(function(data, status, headers, config) {
 		      data.forEach(function(data) {
 		        $scope.recipes.push(data);
-		      })
+		      });
 		    });
 		$http.get("/api/categories").
 			success(function(data,status,headers,config) {
@@ -26,7 +26,7 @@
 				    success(function(data, status, headers, config) {
 				      data.forEach(function(data) {
 				        $scope.recipes.push(data);
-				      })
+				      });
 				 });
 			}
 			else {
@@ -58,7 +58,7 @@
 		    modalInstance.result.then(function (recipe) {
 				$http.delete("/api/recipes/"+$scope.delOption._id).
 					success(function(data,status,headers,config){
-					$location.url("/view/")
+					$location.url("/view/");
 				});
 		  	});
 		};

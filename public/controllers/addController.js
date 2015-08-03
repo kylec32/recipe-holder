@@ -26,7 +26,7 @@
 				console.log(ingredients);
 		    	$scope.recipe.ingredients = ingredients;
 		  	});
-		}
+		};
 
 		$scope.deleteIngredient = function(ingredient){
 			var modalInstance = $modal.open({
@@ -42,7 +42,7 @@
 		    	var indexofdeletion = $scope.recipe.ingredients.indexOf($scope.delIngredient);
 				$scope.recipe.ingredients.splice(indexofdeletion,1);
 		  	});
-		}
+		};
 		
 		$scope.addIngredient = function(){
 			$scope.recipe.ingredients.push({name:"",quantity:"",units:""});

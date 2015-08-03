@@ -25,7 +25,7 @@
                 };
 
                 scope.toggle = function (index) {
-                	if (scope.readonly == undefined || scope.readonly == false){
+                	if (scope.readonly === undefined || scope.readonly === false){
     	                scope.ratingValue.rating = index + 1;
     	                updateStars();
     	                scope.onRatingSelected({
@@ -40,6 +40,6 @@
                     }
                 });
             }
-        }
+        };
     });
 })();
