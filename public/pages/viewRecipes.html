@@ -1,70 +1,24 @@
-<style>
-.modal {
-  display: block;
-}
-
-.modal-body:before,
-  .modal-body:after {
-    display: table;
-    content: " ";
-}
-
-.modal-header:before,
-.modal-header:after {
-  display: table;
-  content: " ";
-}
-
-
-.rating {
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-}
-.rating li {
-  padding: 1px;
-  color: #ddd;
-  font-size: 20px;
-  text-shadow: .05em .05em #aaa;
-  list-style-type: none;
-  display: inline-block;
-  cursor: pointer;
-}
-.rating li.filled {
-  color: #fd0;
-}
-.rating.readonly li.filled {
-  color: #666;
-}
-
-</style>
-
 <div class="page-header">
-  <h1>&nbspCarter Recipes</h1>
+  <p>&nbspCarter Recipes</p>
 </div>
 
-
-
 <script type="text/ng-template" id="myModalContent.html">
-      
-      <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title">Are you sure you want to delete?</h3>
-        </div>
-        <div class="modal-body">
-         <button class="btn btn-lg btn-danger btn-block" ng-click="delete()" >Yes</button>
-         <button class="btn btn-lg btn-primary btn-block" ng-click="close()" >No</button>
-        </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Are you sure you want to delete?</h3>
       </div>
+      <div class="modal-body">
+       <button class="btn btn-lg btn-danger btn-block" ng-click="delete()" >Yes</button>
+       <button class="btn btn-lg btn-primary btn-block" ng-click="close()" >No</button>
       </div>
-        
-
-    </script>
+    </div>
+  </div>
+</script>
 
 <div class="col-md-1">
   <table class="table">
-    <thead><tr><td>Category</td></tr></thead>
+    <thead><tr><th>Category</th></tr></thead>
     <tbody>
       <tr class="my-repeat-animation" ng-repeat="category in categories">
         <td ng-click="filterCategory(category)">
@@ -76,45 +30,57 @@
 </div>
 
 <div class="col-md-11">
-<table class="table table-striped">
-      <thead>
-        <tr>
-          <th>
-            Title
-          </th>
-          <th>
-            Prep Time
-          </th>
-          <th>
-            Cook Time
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="my-repeat-animation"  ng-repeat="recipe in recipes" >
-          <td ng-click="go(recipe)">
-            {{recipe.title}}
-          </td>
-          <td ng-click="go(recipe)">
-            {{recipe.prep_time}}
-          </td>
-          <td ng-click="go(recipe)">
-            {{recipe.cook_time}}
-          </td>
-          <td>
-            <button type="button" class="btn btn-danger btn-lg" ng-click="deleteRecipe(recipe)"><i class="icon-trash icon-white"></i>X</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <table class="table table-striped left-side-menu">
+    <thead>
+      <tr>
+        <th>
+          Title
+        </th>
+        <th>
+          Prep Time
+        </th>
+        <th>
+          Cook Time
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="my-repeat-animation"  ng-repeat="recipe in recipes" >
+        <td ng-click="go(recipe)">
+          {{recipe.title}}
+        </td>
+        <td ng-click="go(recipe)">
+          {{recipe.prep_time}}
+        </td>
+        <td ng-click="go(recipe)">
+          {{recipe.cook_time}}
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger btn-lg" ng-click="deleteRecipe(recipe)">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <br/>
 
 
 
-  <div class="col-sm-6"><a href="#"><button type="button" class="btn btn-default btn-lg">
+<div class="col-sm-6">
+  <a href="#">
+    <button type="button" class="btn btn-default btn-lg">
+      <i class="fa fa-arrow-left"></i>
       Return to Selector
-    </button></a></div>
-<div class="col-sm-6"><a href="#/add"><button type="button" class="btn btn-default btn-lg">
+    </button>
+  </a>
+</div>
+<div class="col-sm-6">
+  <a href="#/add">
+    <button type="button" class="btn btn-default btn-lg">
+      <i class="fa fa-plus"></i>
       Add Recipe
-</button></a></div>
+    </button>
+  </a>
+</div>
