@@ -25,8 +25,8 @@
 			});
 	});
 
-	app.controller('mainController', function($scope) {
-		
+	app.controller('mainController', function($scope, page) {
+		$scope.page = page;
 	});
 	
 	app.filter('unsafe', function($sce) {

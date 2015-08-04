@@ -1,5 +1,5 @@
 (function(){
-	angular.module('recipe-holder').controller('viewRecipeController', function($scope,$http,$location,$routeParams) {
+	angular.module('recipe-holder').controller('viewRecipeController', function($scope,$http,$location,$routeParams,page) {
 		
 		$scope.recipe = {};
 
@@ -7,6 +7,7 @@
 		    success(function(data, status, headers, config) {
 		      $scope.recipe = data;
 		      $scope.recipe.instructions = nl2br($scope.recipe.instructions);
+		      page.setTitle($scope.recipe.title);
 		    });
 
 		$scope.editRecipe = function(editRecipe){

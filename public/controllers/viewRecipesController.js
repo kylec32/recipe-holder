@@ -1,17 +1,15 @@
 (function(){
-	angular.module('recipe-holder').controller('viewRecipesController', function($scope,$http,$location,$log,$modal) {
+	angular.module('recipe-holder').controller('viewRecipesController', function($scope,$http,$location,$log,$modal, page, recipeService) {
 
 		$scope.delOption = {};
 
 		$scope.recipes = [];
 		$scope.categories = ["No Filter"];
 
-		 $http.get("/api/recipes").
-		    success(function(data, status, headers, config) {
-		      data.forEach(function(data) {
-		        $scope.recipes.push(data);
-		      });
-		    });
+		page.setTitle("List of Recipes");
+
+		$scope.recipes = recipeService.getRecipes();
+		
 		$http.get("/api/categories").
 			success(function(data,status,headers,config) {
 				data.forEach(function(data) {

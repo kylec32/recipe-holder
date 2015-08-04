@@ -1,18 +1,19 @@
 (function(){
-	angular.module('recipe-holder').controller('addController', function($scope, $http, $location,$routeParams,$modal) {
-			
+	angular.module('recipe-holder').controller('addController', function($scope, $http, $location,$routeParams,$modal,page,recipeService) {
+
 		$scope.recipe = {ingredients:[]};
 		$scope.title = "Add Recipe";
 
 		if($routeParams.id){
 
-			$http.get("/api/recipes/"+$routeParams.id).
-				success(function(data,status,headers,config) {
-					console.log(data);
+			recipeService.getRecipe($routeParams.id)
+				.success(function(data,status,headers,config) {
 					$scope.recipe = data;
-					$scope.title = "Edit: "+$scope.recipe.title;
+					$scope.title = "Edit: " + $scope.recipe.title;
 				});
 		}
+
+		page.setTitle($scope.title);
 
 		$scope.importIngs = function(){
 			var modalInstance = $modal.open({
@@ -50,16 +51,10 @@
 
 		$scope.saveRecipe = function(){
 			if($scope.recipe._id){
-				$http.put("/api/recipes/"+$scope.recipe._id, $scope.recipe).
-			    success(function(data, status, headers, config) {
-			      $location.url("/view/"+data._id);
-			    });
+				recipeService.updateRecipes($scope.recipe);
 			}
 			else{
-				$http.post("/api/recipes", $scope.recipe).
-			    success(function(data, status, headers, config) {
-			      $location.url("/view/"+data._id);
-			    });
+				recipeService.saveRecipe($scope.recipe);
 			}
 			
 		};
