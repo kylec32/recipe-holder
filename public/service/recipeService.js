@@ -39,6 +39,15 @@
 
 		return promise;
     }
+
+    recipes.deleteRecipe = function(id){
+    	var promise = $http.delete("/api/recipes/"+id)
+    		.success(function(data,status,headers,config) {
+    			return data;
+    		});
+
+    	return promise
+    }
      
     return recipes;
  

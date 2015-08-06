@@ -1,5 +1,5 @@
 (function(){
-	angular.module('recipe-holder').controller('viewRecipesController', function($scope,$http,$location,$log,$modal, page, recipeService) {
+	angular.module('recipe-holder').controller('viewRecipesController', function($scope,$http,$location,$log,$modal, page, recipeService, categoryService, searchService) {
 
 		$scope.delOption = {};
 
@@ -10,32 +10,17 @@
 
 		$scope.recipes = recipeService.getRecipes();
 		
-		$http.get("/api/categories").
-			success(function(data,status,headers,config) {
-				data.forEach(function(data) {
-					$scope.categories.push(data);
-				});
-			});
+		$scope.categories = categoryService.getCategories();
 
 		$scope.filterCategory = function(category) {
 			$scope.recipes = [];
 			if(category == "No Filter") {
-				 $http.get("/api/recipes").
-				    success(function(data, status, headers, config) {
-				      data.forEach(function(data) {
-				        $scope.recipes.push(data);
-				      });
-				 });
+				 $scope.recipes = recipeService.getRecipes();
 			}
 			else {
 				var searchCriteria = {};
 				searchCriteria.category = category;
-				$http.post("/api/search",searchCriteria).
-					success(function(data,status,headers,config) {
-						data.forEach(function(data) {
-				        	$scope.recipes.push(data);
-				      	});
-					});
+				$scope.recipes = searchService.search(searchCriteria);
 			}
 		};
 
@@ -53,11 +38,12 @@
 			    controller: 'ModalInstanceCtrl',
 			    backdrop: "static"
 			  });
+
 		    modalInstance.result.then(function (recipe) {
-				$http.delete("/api/recipes/"+$scope.delOption._id).
-					success(function(data,status,headers,config){
-					$location.url("/view/");
-				});
+		    	recipeService.deleteRecipe($scope.delOption._id)
+		    		.success(function(data,status,headers,config) {
+		    			$location.url("/view/");
+		    		});
 		  	});
 		};
 
