@@ -2,6 +2,7 @@
 	angular.module('recipe-holder').controller('viewRecipesController', function($scope,$http,$location,$log,$modal, page, recipeService, categoryService, searchService) {
 
 		$scope.delOption = {};
+		$scope.searchTerm = "";
 
 		$scope.recipes = [];
 		$scope.categories = ["No Filter"];
@@ -47,6 +48,12 @@
 		  	});
 		};
 
+		$scope.search = function() {
+			console.log("Stuff");
+			var searchCriteria = {};
+			searchCriteria.ingredient = $scope.searchTerm;
+			$scope.recipes = searchService.search(searchCriteria);
+		}
 
 		$scope.open = function (size) {
 
