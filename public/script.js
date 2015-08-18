@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('recipe-holder', ['ui.bootstrap', 'ngRoute']);
+	var app = angular.module('recipe-holder', ['ui.bootstrap', 'ngRoute', 'underscore']);
 
 	app.config(function($routeProvider) {
 		$routeProvider

@@ -1,5 +1,5 @@
 (function(){
-	angular.module('recipe-holder').controller('viewRecipesController', function($scope,$http,$location,$log,$modal, page, recipeService, categoryService, searchService) {
+	angular.module('recipe-holder').controller('viewRecipesController', function($scope,$http,$location,$log,$modal, page, recipeService, categoryService, searchService, _) {
 
 		$scope.delOption = {};
 		$scope.searchTerm = "";
@@ -12,9 +12,11 @@
 		$scope.recipes = recipeService.getRecipes();
 		
 		$scope.categories = categoryService.getCategories();
+		$scope.currentCategory = "No Filter"
 
 		$scope.filterCategory = function(category) {
 			$scope.recipes = [];
+			$scope.currentCategory = category;
 			if(category == "No Filter") {
 				 $scope.recipes = recipeService.getRecipes();
 			}
@@ -48,8 +50,9 @@
 		  	});
 		};
 
-		$scope.search = function() {
-			console.log("Stuff");
+		$scope.search = _.debounce(doSearch, 500);
+
+		function doSearch(){
 			var searchCriteria = {};
 			searchCriteria.ingredient = $scope.searchTerm;
 			$scope.recipes = searchService.search(searchCriteria);
