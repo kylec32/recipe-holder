@@ -1,4 +1,16 @@
-<div class="page-header">
+<div class="navbar navbar-default navbar-fixed-top page-header">
+  <ul class="nav navbar-nav">
+    <li>
+      <a href="#view">
+        <i class="fa fa-arrow-left"></i>
+      </a>
+    </li>
+    <li>
+      <a ng-click="editRecipe(recipe)">
+        <i class="fa fa-pencil"></i>
+      </a>
+    </li>
+  </ul>
   <p>{{recipe.title}}</p>
 </div>
 
@@ -17,7 +29,7 @@
   <div id="cooktime" ng-show="recipe.cook_time">    
       {{recipe.cook_time}} minutes
   </div>
-  <div id="cooktime_unknown">
+  <div id="cooktime_unknown" ng-hide="recipe.cook_time">
     Unknown
   </div>
 </div>
@@ -83,16 +95,4 @@
 
 <br/>
 
-<div class="col-md-6">
-  <a href="#view">
-    <button type="button" class="btn btn-default btn-lg">
-      Return to All
-    </button>
-  </a>
-</div>
-
-<div class="col-md-6">
-  <button type="button" ng-click="editRecipe(recipe)" class="btn btn-default btn-lg">
-    Edit Recipe
-  </button>
-</div>
+<div class="bottom-padding"></div>

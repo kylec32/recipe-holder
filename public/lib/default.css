@@ -39,7 +39,7 @@
   background-color: #000;
   margin-top:0px;
   margin-bottom:0px;
-  padding-bottom:20px;
+
 }
 .page-header p {
   color:#FFF;
@@ -47,9 +47,13 @@
   font-size: 20pt;
   text-align: center;
 }
+.bottom-padding {
+  padding-bottom:80px;
+}
 
 html, body {
   height: 100%;
+  padding-top: 40px;
 }
 
 .jumbotron.vertical-center {

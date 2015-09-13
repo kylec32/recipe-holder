@@ -13,8 +13,6 @@
 				});
 		}
 
-		page.setTitle($scope.title);
-
 		$scope.importIngs = function(){
 			var modalInstance = $modal.open({
 			    animation: true,
@@ -22,6 +20,8 @@
 			    controller: 'IngredientImportCtrl',
 			    backdrop: "static"
 			  });
+
+			console.log(modalInstance);
 
 			modalInstance.result.then(function (ingredients) {
 				console.log(ingredients);

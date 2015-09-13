@@ -7,8 +7,6 @@
 		$scope.recipes = [];
 		$scope.categories = ["No Filter"];
 
-		page.setTitle("List of Recipes");
-
 		$scope.recipes = recipeService.getRecipes();
 		
 		$scope.categories = categoryService.getCategories();

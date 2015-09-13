@@ -29,7 +29,19 @@
   </div>
 </script>
 
-<div class="page-header">
+<div class="navbar navbar-default navbar-fixed-top page-header">
+  <ul class="nav navbar-nav">
+    <li>
+      <a href="#view">
+        <i class="fa fa-arrow-left"></i>
+      </a>
+    </li>
+    <li>
+      <a ng-click="saveRecipe()">
+        <i class="fa fa-floppy-o"></i>
+      </a>
+    </li>
+  </ul>
   <p>{{title}}</p>
 </div>
 
@@ -138,18 +150,5 @@
 </table>
   
 <br/>
-<div class="col-md-6">
-  <a href="#view">
-    <button type="button" class="btn btn-default btn-lg">
-      <i class="fa fa-arrow-left"></i>
-      Return to All
-    </button>
-  </a>
-</div>
 
-<div class="col-md-6">
-  <button type="button" ng-click="saveRecipe()" class="btn btn-default btn-lg">
-    <i class="fa fa-floppy-o"></i>
-    Save Recipe
-  </button>
-</div>
+<div class="bottom-padding"></div>
