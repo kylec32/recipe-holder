@@ -4,15 +4,21 @@
 
 <div class="col-md-6">
   <label for="preptime">Prep Time</label>
-  <div id="preptime">    
-      {{recipe.prep_time}} minutes
+  <div id="preptime" ng-show="recipe.prep_time">    
+    {{recipe.prep_time}} minutes
+  </div>
+  <div id="prepTime_unknown" ng-hide="recipe.prep_time">
+    Unknown
   </div>
 </div>
 
 <div class="col-md-6">
   <label for="cooktime">Cook Time</label>
-  <div id="cooktime">    
+  <div id="cooktime" ng-show="recipe.cook_time">    
       {{recipe.cook_time}} minutes
+  </div>
+  <div id="cooktime_unknown">
+    Unknown
   </div>
 </div>
 

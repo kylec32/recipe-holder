@@ -50,11 +50,12 @@
 		};
 
 		$scope.saveRecipe = function(){
+			console.log($scope.recipe.recipe_id);
 			if($scope.recipe._id){
-				recipeService.updateRecipes($scope.recipe);
+				recipeService.updateRecipe($scope.recipe);
 			}
 			else{
-				recipeService.saveRecipe($scope.recipe);
+				recipeService.saveNew($scope.recipe);
 			}
 			
 		};

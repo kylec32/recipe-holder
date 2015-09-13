@@ -6,6 +6,9 @@ var logger = require('morgan');
 var path = require('path');
 var mongoose = require('mongoose');
 var dbConnection = require('./db.js');
+var newRelic = require('./newrelic.js');
+
+console.log(newRelic);
 
 var recipeModel = require('./models/Recipe.js');
 
