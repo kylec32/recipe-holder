@@ -1,5 +1,5 @@
 (function(){
-	angular.module('recipe-holder').controller('addController', function($scope, $http, $location,$routeParams,$modal,page,recipeService) {
+	angular.module('recipe-holder').controller('addController', function($scope, $http, $location,$routeParams,$modal,page,recipeService, categoryService) {
 
 		$scope.recipe = {ingredients:[]};
 		$scope.title = "Add Recipe";
@@ -44,7 +44,7 @@
 				$scope.recipe.ingredients.splice(indexofdeletion,1);
 		  	});
 		};
-		
+
 		$scope.addIngredient = function(){
 			$scope.recipe.ingredients.push({name:"",quantity:"",units:""});
 		};
@@ -57,7 +57,11 @@
 			else{
 				recipeService.saveNew($scope.recipe);
 			}
-			
+
 		};
+
+		var isDefaultValueExcluded = true;
+		$scope.categories = categoryService.getCategories(isDefaultValueExcluded);
+
 	});
 })();
