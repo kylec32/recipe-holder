@@ -11,8 +11,13 @@ router.post('/', function(req, res, next) {
 	if(req.body.category && req.body.category.length>0){
 		recipeSearch = recipeSearch.where('category').equals(new RegExp(req.body.category,"i"));
 	}
-	if(req.body.ingredient && req.body.ingredient.length >0){
-		recipeSearch = recipeSearch.where('ingredients.name').equals(new RegExp(req.body.ingredient,"i"));
+
+	if(req.body.ingredients && req.body.ingredients.length > 0){
+		req.body.ingredients.map(function (ingredient) {
+			recipeSearch = recipeSearch
+				.where('ingredients.name')
+				.equals(new RegExp(ingredient.trim(),"i"));
+		});
 	}
 
   recipeSearch.exec(function (err, recipes) {

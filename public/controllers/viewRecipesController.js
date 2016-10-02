@@ -52,7 +52,7 @@
 
 		function doSearch(){
 			var searchCriteria = {};
-			searchCriteria.ingredient = $scope.searchTerm;
+			searchCriteria.ingredients = $scope.searchTerm.split(',');
 			$scope.recipes = searchService.search(searchCriteria);
 		}
 
