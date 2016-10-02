@@ -19,6 +19,7 @@
   padding: 0;
   display: inline-block;
 }
+
 .rating li {
   padding: 1px;
   color: #ddd;
@@ -28,25 +29,41 @@
   display: inline-block;
   cursor: pointer;
 }
+
 .rating li.filled {
   color: #fd0;
 }
+
 .rating.readonly li.filled {
   color: #666;
+}
+
+.page-headerPicker {
+  background-color: #000;
+  margin-top:-80px;
+  margin-bottom:0px;
+}
+
+.page-headerPicker p {
+  color:#FFF;
+  font-weight: bold;
+  font-size: 20pt;
+  text-align: center;
 }
 
 .page-header {
   background-color: #000;
   margin-top:0px;
   margin-bottom:0px;
-
 }
+
 .page-header p {
   color:#FFF;
   font-weight: bold;
   font-size: 20pt;
   text-align: center;
 }
+
 .bottom-padding {
   padding-bottom:80px;
 }
