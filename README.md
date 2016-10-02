@@ -22,3 +22,5 @@ The application will be accessible at `localhost:3000` by default.
 
 
 This application is also enable to run on OpenShift and will adopt the ports and host information from the environment there is deployed. 
+
+Have an idea for a feature or find a bug!? Log an issue!
