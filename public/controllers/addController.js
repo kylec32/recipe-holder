@@ -51,6 +51,16 @@
 
 		$scope.saveRecipe = function(){
 			console.log($scope.recipe.recipe_id);
+
+			// make categories as array
+			var categs = [];
+			if($scope.recipe.category != undefined){
+				for(var item in $scope.recipe.category){
+					categs.push($scope.recipe.category[item]['text']);
+				}
+				$scope.recipe.category = categs;
+			}
+
 			if($scope.recipe._id){
 				recipeService.updateRecipe($scope.recipe);
 			}
