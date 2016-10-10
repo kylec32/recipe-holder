@@ -10,6 +10,9 @@
 				.success(function(data,status,headers,config) {
 					$scope.recipe = data;
 					$scope.title = "Edit: " + $scope.recipe.title;
+
+					if($scope.recipe.category !== undefined)
+						$scope.recipe.category = $scope.recipe.category.split(',');
 				});
 		}
 
@@ -59,9 +62,9 @@
 					categs.push($scope.recipe.category[item]['text']);
 				}
 				$scope.recipe.category = categs;
+				$scope.recipe.category = $scope.recipe.category.toString();
 			}
 
-			$scope.recipe.category = $scope.recipe.category.toString();
 
 			if($scope.recipe._id){
 				recipeService.updateRecipe($scope.recipe);
