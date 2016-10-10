@@ -10,6 +10,9 @@
 				.success(function(data,status,headers,config) {
 					$scope.recipe = data;
 					$scope.title = "Edit: " + $scope.recipe.title;
+
+					if($scope.recipe.category !== undefined)
+						$scope.recipe.category = $scope.recipe.category.split(',');
 				});
 		}
 
@@ -51,6 +54,18 @@
 
 		$scope.saveRecipe = function(){
 			console.log($scope.recipe.recipe_id);
+
+			// make categories as array
+			var categs = [];
+			if($scope.recipe.category != undefined){
+				for(var item in $scope.recipe.category){
+					categs.push($scope.recipe.category[item]['text']);
+				}
+				$scope.recipe.category = categs;
+				$scope.recipe.category = $scope.recipe.category.toString();
+			}
+
+
 			if($scope.recipe._id){
 				recipeService.updateRecipe($scope.recipe);
 			}

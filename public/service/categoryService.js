@@ -8,8 +8,15 @@
 
             $http.get("/api/categories").
                 success(function(data, status, headers, config) {
+                    
                   data.forEach(function(data) {
-                    cat.push(data);
+                    // cat.push(data);
+                    var sp = data.split(',');
+                    sp.forEach(function(d){
+                        console.log(d);
+                        if(cat.indexOf(d) == -1)
+                            cat.push(d);
+                    });
                   });
                 });
 
