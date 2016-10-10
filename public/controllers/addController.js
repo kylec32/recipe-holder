@@ -61,6 +61,8 @@
 				$scope.recipe.category = categs;
 			}
 
+			$scope.recipe.category = $scope.recipe.category.toString();
+
 			if($scope.recipe._id){
 				recipeService.updateRecipe($scope.recipe);
 			}
