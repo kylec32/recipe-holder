@@ -1,10 +1,10 @@
 (function(){
 	angular.module('recipe-holder').factory('categoryService', function($http,$location){
-     
+
         var category = {};
 
-        category.getCategories = function() {
-            var cat = ["No Filter"];
+        category.getCategories = function(isDefaultValueExcluded) {
+            var cat = isDefaultValueExcluded ? [] : ["No Filter"];
 
             $http.get("/api/categories").
                 success(function(data, status, headers, config) {
@@ -17,6 +17,6 @@
         }
 
         return category;
- 
+
 	});
 })();
