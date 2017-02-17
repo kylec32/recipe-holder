@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
 
+import { RecipeService } from './services/recipe-service.service'
+import { CategoryService } from './services/category.service'
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -35,7 +37,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     AlertModule
   ],
-  providers: [],
+  providers: [RecipeService, CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipe';
+import { RecipeService } from '../services/recipe-service.service'
+import { CategoryService } from '../services/category.service'
 
 @Component({
   selector: 'app-view',
@@ -8,48 +10,43 @@ import { Recipe } from '../recipe';
 })
 export class ViewComponent implements OnInit {
 
-  recipes:Recipe[] = [
-    {
-       'title': 'My Awesome Sauce',
-        'url':'1800 spank me',
-        'prep_time':'11',
-        'cook_time':'20',
-        'instructions':'String',
-        'rating':1, 
-        'category':'String'
-    },
-    {
-       'title': 'Cool Beans',
-        'url':'String',
-        'prep_time':'3',
-        'cook_time':'1',
-        'instructions':'String',
-        'rating':1, 
-        'category':'String'
-    },
-    {
-       'title': 'Pumpkin Spice',
-        'url':'String',
-        'prep_time':'15',
-        'cook_time':'2',
-        'instructions':'String',
-        'rating':1, 
-        'category':'String'
-    },
-    {
-       'title': 'Biscuts and Gravy',
-        'url':'String',
-        'prep_time':'4',
-        'cook_time':'2',
-        'instructions':'String',
-        'rating':1, 
-        'category':'String'
-    }
-  ];
+  recipes:Recipe[] = [];
+  categories:string[] = [];
 
-  constructor() { }
+  constructor(private _recipeService: RecipeService,
+              private _categoryService: CategoryService) { }
 
   ngOnInit() {
+    this.loadRecipes();
+    this.loadCategories();
+  }
+
+  private loadRecipes():void {
+    this._recipeService.getRecipes()
+                        .subscribe(recipes => this.recipes = recipes,
+                        err => {
+                          console.log(err);
+                        });
+  }
+  
+  private loadCategories():void {
+    this._categoryService.getCategories()
+                          .subscribe(categories => this.categories = categories,
+                          err => {
+                            console.log(err);
+                          });
+  }
+
+  deleteRecipe(recipe:Recipe):void {
+    this._recipeService.deleteRecipe(recipe._id)
+                        .then(response => {
+                          this.loadRecipes();
+                          this.loadCategories();
+                        })
+                        .catch(reasons => {
+                          this.loadRecipes();
+                          console.log(`Error occurred on delete:${recipe._id}`)
+                        });
   }
 
 }

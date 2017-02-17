@@ -1,4 +1,5 @@
 export interface Recipe {
+  _id: String,
   title: String,
   url:String,
   prep_time:String,

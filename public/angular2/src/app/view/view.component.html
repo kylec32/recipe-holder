@@ -43,7 +43,8 @@
   </table>
 
   <div class="list-group" >
-    <!--<a class="list-group-item" ng-class="{active: currentCategory == category}" ng-click="filterCategory(category)" ng-repeat="category in categories">{{category}}</a>-->
+    <!---<a class="list-group-item" ng-class="{active: currentCategory == category}" ng-click="filterCategory(category)" *ngFor="let category of categories">{{category}}</a>-->
+    <a class="list-group-item" *ngFor="let category of categories">{{category}}</a>
   </div>
 </div>
 
@@ -74,7 +75,7 @@
           {{recipe.cook_time}}
         </td>
         <td>
-          <button type="button" class="btn btn-danger btn-lg" ng-click="deleteRecipe(recipe)">
+          <button type="button" class="btn btn-danger btn-lg" (click)="deleteRecipe(recipe)">
             <i class="fa fa-trash"></i>
           </button>
         </td>
