@@ -32,7 +32,7 @@
 <div class="navbar navbar-default navbar-fixed-top page-header">
   <ul class="nav navbar-nav">
     <li>
-      <a href="#view">
+      <a (click)="this._router.navigate(['view'])">
         <i class="fa fa-arrow-left"></i>
       </a>
     </li>
@@ -83,8 +83,7 @@
 
 <div class="col-sm-6">
   <label for="rating">Rating</label>
-    <!--<star-rating id="rating" rating-value="recipe" max="5"></star-rating>-->
-    Star Rating
+    <star-rating [(value)]="recipe.rating"></star-rating>
 </div>
 
 <div class="col-sm-11">
@@ -141,7 +140,7 @@
         </button>
       </td>
       <td colspan="2">
-        <button type="button" class="btn btn-default btn-lg" ng-click="importIngs()">
+        <button type="button" class="btn btn-default btn-lg" (click)="ingredientsImport()">
           <i class="fa fa-download"></i>
           Ingredient Import
         </button>

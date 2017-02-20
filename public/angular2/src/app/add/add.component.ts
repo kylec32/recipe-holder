@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router} from '@angular/router';
 import { Recipe } from '../recipe';
 import { Ingredient } from '../ingredient'
 import { RecipeService } from '../services/recipe-service.service'
+import { StarRatingComponent } from '../star-rating/star-rating.component'
 
 @Component({
   selector: 'app-add',
@@ -13,7 +15,7 @@ export class AddComponent implements OnInit {
   recipe:Recipe = this.blankRecipe();
   title:String;
 
-  constructor(private _recipeService:RecipeService) { }
+  constructor(private _recipeService:RecipeService, private _router:Router) { }
 
   ngOnInit() {
     this.recipe.title = "This is the title 2";
@@ -27,7 +29,7 @@ export class AddComponent implements OnInit {
       prep_time:"4",
       cook_time:"4",
       instructions:"Here is the instructions",
-      rating:0, 
+      rating:2, 
       category:"111",
       ingredients:[{_id: "",
         name: "Milk",
@@ -37,7 +39,7 @@ export class AddComponent implements OnInit {
   }
 
   addIngredient():void {
-    this.recipe.ingredients.push({_id: String,
+    this.recipe.ingredients.push({_id: "",
       name: "",
       quantity:"",
       units:""});
@@ -46,6 +48,10 @@ export class AddComponent implements OnInit {
   deleteIngredient(ingredient:Ingredient):void {
     var index = this.recipe.ingredients.indexOf(ingredient);
     this.recipe.ingredients.splice(index, 1);
+  }
+
+  ingredientsImport():void {
+    console.dir(this.recipe)
   }
 
   saveRecipe():void {

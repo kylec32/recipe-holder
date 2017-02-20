@@ -1,0 +1,5 @@
+<ul class="rating" ng-class="{readonly: readonly}">
+  <li *ngFor="let star of stars; let i = index" ng-class="star" (click)="toggle(i)">
+      <i [ngClass]="starClass(star)"></i>
+  </li>
+</ul>

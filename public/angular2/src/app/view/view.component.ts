@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
 import { Recipe } from '../recipe';
 import { RecipeService } from '../services/recipe-service.service'
 import { CategoryService } from '../services/category.service'
@@ -14,7 +15,8 @@ export class ViewComponent implements OnInit {
   categories:string[] = [];
 
   constructor(private _recipeService: RecipeService,
-              private _categoryService: CategoryService) { }
+              private _categoryService: CategoryService,
+              private _router: Router) { }
 
   ngOnInit() {
     this.loadRecipes();

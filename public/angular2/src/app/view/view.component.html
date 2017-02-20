@@ -1,12 +1,12 @@
 <div class="navbar navbar-default navbar-fixed-top page-header">
   <ul class="nav navbar-nav">
     <li>
-      <a href="/">
+      <a (click)="this._router.navigate([''])">
         <i class="fa fa-arrow-left"></i>
       </a>
     </li>
     <li>
-      <a href="/add">
+      <a (click)="this._router.navigate(['add'])">
         <i class="fa fa-plus"></i>
       </a>
     </li>
@@ -65,17 +65,17 @@
     </thead>
     <tbody>
       <tr class="my-repeat-animation"  *ngFor="let recipe of recipes" >
-        <td ng-click="go(recipe)">
+        <td ng-click="go(recipe)" class="data-cell">
           {{recipe.title}}
         </td>
-        <td ng-click="go(recipe)">
+        <td ng-click="go(recipe)" class="data-cell">
           {{recipe.prep_time}}
         </td>
-        <td ng-click="go(recipe)">
+        <td ng-click="go(recipe)" class="data-cell">
           {{recipe.cook_time}}
         </td>
         <td>
-          <button type="button" class="btn btn-danger btn-lg" (click)="deleteRecipe(recipe)">
+          <button type="button" class="btn btn-danger btn-lg delete" (click)="deleteRecipe(recipe)">
             <i class="fa fa-trash"></i>
           </button>
         </td>

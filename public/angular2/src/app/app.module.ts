@@ -13,18 +13,21 @@ import { HomeComponent } from './home/home.component';
 import { ActivityPickerComponent } from './activity-picker/activity-picker.component';
 import { AddComponent } from './add/add.component';
 import { ViewComponent } from './view/view.component';
+import { StarRatingComponent } from './star-rating/star-rating.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', component: ActivityPickerComponent },
   { path: 'add', component: AddComponent},
-  { path: 'view', component: ViewComponent}
+  { path: 'view', component: ViewComponent},
+  { path: 'star', component: StarRatingComponent}
 ];
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    StarRatingComponent,
     HomeComponent,
     ActivityPickerComponent,
     AddComponent,
