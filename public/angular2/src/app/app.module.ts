@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
-import { AlertModule } from 'ng2-bootstrap';
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 
 import { RecipeService } from './services/recipe-service.service'
 import { CategoryService } from './services/category.service'
@@ -14,15 +14,14 @@ import { ActivityPickerComponent } from './activity-picker/activity-picker.compo
 import { AddComponent } from './add/add.component';
 import { ViewComponent } from './view/view.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', component: ActivityPickerComponent },
   { path: 'add', component: AddComponent},
-  { path: 'view', component: ViewComponent},
-  { path: 'star', component: StarRatingComponent}
+  { path: 'view', component: ViewComponent}
 ];
-
 
 @NgModule({
   declarations: [
@@ -31,14 +30,18 @@ const appRoutes: Routes = [
     HomeComponent,
     ActivityPickerComponent,
     AddComponent,
-    ViewComponent
+    ViewComponent,
+    ConfirmComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    AlertModule
+    BootstrapModalModule
+  ],
+  entryComponents: [
+    ConfirmComponent
   ],
   providers: [RecipeService, CategoryService],
   bootstrap: [AppComponent]

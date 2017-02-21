@@ -14,20 +14,6 @@
   <p>&nbsp;Recipes</p>
 </div>
 
-<!--<script type="text/ng-template" id="myModalContent.html">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title">Are you sure you want to delete?</h3>
-      </div>
-      <div class="modal-body">
-       <button class="btn btn-lg btn-danger btn-block" ng-click="delete()" >Yes</button>
-       <button class="btn btn-lg btn-primary btn-block" ng-click="close()" >No</button>
-      </div>
-    </div>
-  </div>
-</script>-->
-
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
     <div class="">
@@ -75,31 +61,14 @@
           {{recipe.cook_time}}
         </td>
         <td>
-          <button type="button" class="btn btn-danger btn-lg delete" (click)="deleteRecipe(recipe)">
+          <button type="button" class="btn btn-danger btn-lg delete" (click)="confirmDelete(recipe)">
             <i class="fa fa-trash"></i>
           </button>
         </td>
       </tr>
-      <!--<tr class="my-repeat-animation"  ng-repeat="recipe in recipes" >
-        <td ng-click="go(recipe)">
-          {{recipe.title}}
-        </td>
-        <td ng-click="go(recipe)">
-          {{recipe.prep_time}}
-        </td>
-        <td ng-click="go(recipe)">
-          {{recipe.cook_time}}
-        </td>
-        <td>
-          <button type="button" class="btn btn-danger btn-lg" ng-click="deleteRecipe(recipe)">
-            <i class="fa fa-trash"></i>
-          </button>
-        </td>
-      </tr>-->
     </tbody>
   </table>
 </div>
 <br/>
-
 
 <div class="bottom-padding"></div>
