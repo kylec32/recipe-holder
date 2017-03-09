@@ -41,7 +41,7 @@
 .page-headerPicker {
   background-color: #000;
   margin-top:-80px;
-  margin-bottom:0px;
+  margin-bottom:-10px;
 }
 
 .page-headerPicker p {
