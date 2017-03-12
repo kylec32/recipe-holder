@@ -15,12 +15,15 @@ import { AddComponent } from './add/add.component';
 import { ViewComponent } from './view/view.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { ConfirmComponent } from './confirm/confirm.component';
+import { ViewRecipeComponent } from './view-recipe/view-recipe.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', component: ActivityPickerComponent },
   { path: 'add', component: AddComponent},
-  { path: 'view', component: ViewComponent}
+  { path: 'add/:id', component: AddComponent},
+  { path: 'view', component: ViewComponent},
+  { path: 'view/:id', component: ViewRecipeComponent}
 ];
 
 @NgModule({
@@ -31,7 +34,8 @@ const appRoutes: Routes = [
     ActivityPickerComponent,
     AddComponent,
     ViewComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    ViewRecipeComponent
   ],
   imports: [
     BrowserModule,

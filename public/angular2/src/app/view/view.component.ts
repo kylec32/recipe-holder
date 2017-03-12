@@ -17,8 +17,8 @@ export class ViewComponent implements OnInit {
   categories:string[] = [];
 
   constructor(private _recipeService: RecipeService,
+              private _dialogService: DialogService,
               private _categoryService: CategoryService,
-              private _dialogService:DialogService,
               private _router: Router) { }
 
   ngOnInit() {
@@ -55,6 +55,7 @@ export class ViewComponent implements OnInit {
   }
 
   confirmDelete(recipe:Recipe):void {
+    //staticModal.show()
     let disposable = this._dialogService.addDialog(ConfirmComponent, {
                     title:`Delete ${recipe.title}?`, 
                     message:`Are you sure you want to delete ${recipe.title}. This action cannot be undone.`})

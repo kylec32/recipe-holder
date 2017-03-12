@@ -1,0 +1,102 @@
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <div class="collapse navbar-collapse" id="navbarNav"  style="width:auto">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" (click)="this._router.navigate(['view'])">
+        <i class="fa fa-arrow-left"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="this._router.navigate(['add',id])">
+        <i class="fa fa-pencil"></i>
+      </a>
+    </li>
+  </ul>
+  </div>
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <h1 class="navbar-brand mb-0 page-header">{{recipe.title}}</h1>
+</nav>
+
+<div class="row">
+  <div class="col-md-6">    
+    <div class="form-group">
+      <label for="prep_time">Prep Time</label> <br/>
+      <span id="prep_time">{{recipe.prep_time}}</span>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="cook_time">Cook Time</label> <br/>
+      <span id="cook_time">{{recipe.cook_time}}</span>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="url">URL</label><br/>
+      <a id="url" [href]="recipe.url">{{recipe.url}}</a>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <label for="rating">Rating</label>
+      <star-rating [(value)]="recipe.rating" [readonly]="true"></star-rating>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label for="category">Category</label><br/>
+      <span id="category">{{recipe.category}}</span>
+    </div>
+  </div>
+  
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label for="instructions">Instructions</label><br/>
+      <span id="instructions">{{recipe.instructions}}</span>
+    </div>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>
+        Quantity
+      </th>
+      <th>
+        Unit
+      </th>
+      <th>
+        Ingredient
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="my-repeat-animation"  *ngFor="let ingredient of recipe.ingredients">
+      <td >
+        <span>{{ingredient.quantity}}</span>
+      </td>
+      <td >
+        <span>{{ingredient.units}}</span>
+      </td>
+      <td >
+        <span>{{ingredient.name}}</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+  
+<br/>
+
+<div class="bottom-padding"></div>

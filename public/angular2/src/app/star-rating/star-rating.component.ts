@@ -9,6 +9,7 @@ export class StarRatingComponent implements OnInit {
 
   stars:boolean[] = []
   @Input() value:number = 1;
+  @Input() readonly:boolean = false
   @Output() valueChange: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
@@ -27,7 +28,9 @@ export class StarRatingComponent implements OnInit {
   }
 
   toggle(index):void {
-    this.updateStars(index+1)
+    if(!this.readonly) {
+      this.updateStars(index+1)
+    }
   }
 
   starClass(star:boolean):string {

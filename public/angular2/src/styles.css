@@ -34,17 +34,23 @@
 .rating li.filled {
   color: #fd0;
 }
-
+.search {
+  padding-top: 15px;
+}
 .rating.readonly li.filled {
   color: #666;
 }
-
+.table th {
+  border-top: 0px!important;
+}
 .page-headerPicker {
   background-color: #000;
-  margin-top:-80px;
-  margin-bottom:-10px;
+  margin-bottom:-20px;
 }
-
+.row{
+  padding-left: 10px;
+  padding-right: 10px;
+}
 .page-headerPicker p {
   color:#FFF;
   font-weight: bold;
@@ -52,10 +58,9 @@
   text-align: center;
 }
 
-.page-header {
-  background-color: #000!important;
-  margin-top:0px!important;
-  margin-bottom:0px!important;
+h1.page-header {
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .page-header p {
@@ -71,7 +76,6 @@
 
 html, body {
   height: 100%;
-  padding-top: 40px;
 }
 
 .jumbotron.vertical-center {
@@ -131,4 +135,65 @@ html, body {
     height: 100%;
     background-size: cover;
     overflow: hidden;
+}
+
+
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+}
+ 
+.fade {
+    opacity: 0;
+    -webkit-transition: opacity .15s linear;
+    -o-transition: opacity .15s linear;
+    transition: opacity .15s linear;
+}
+ 
+.fade.in {
+    opacity: 1;
+}
+ 
+.modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 10px;
+    padding-top:50px
+}
+ 
+.modal.in .modal-dialog {
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    -o-transform: translate(0,0);
+    transform: translate(0,0);
+}
+ 
+.modal.fade .modal-dialog {
+    -webkit-transition: -webkit-transform .3s ease-out;
+    -o-transition: -o-transform .3s ease-out;
+    transition: transform .3s ease-out;
+    -webkit-transform: translate(0,-25%);
+    -ms-transform: translate(0,-25%);
+    -o-transform: translate(0,-25%);
+    transform: translate(0,-25%);
+}
+ 
+@media (min-width: 768px) {
+    .modal-dialog {
+        width: 600px;
+        margin: 30px auto;
+    }
+}
+
+label {
+    font-weight: bold;
 }

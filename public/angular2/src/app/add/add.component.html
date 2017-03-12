@@ -29,67 +29,80 @@
   </div>
 </script>
 
-<div class="navbar navbar-default navbar-fixed-top page-header">
-  <ul class="nav navbar-nav">
-    <li>
-      <a (click)="this._router.navigate(['view'])">
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <div class="collapse navbar-collapse" id="navbarNav"  style="width:auto">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" (click)="this._router.navigate(['view'])">
         <i class="fa fa-arrow-left"></i>
       </a>
     </li>
-    <li>
-      <a (click)="saveRecipe()">
+    <li class="nav-item">
+      <a class="nav-link" (click)="saveRecipe()">
         <i class="fa fa-floppy-o"></i>
       </a>
     </li>
   </ul>
-  <p>{{recipe.title}}</p>
-</div>
+  </div>
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <h1 class="navbar-brand mb-0 page-header">{{recipe.title}}</h1>
+</nav>
 
-<div class="col-sm-6"> 
-  <div class="form-group">
-      <label for="title">Title</label>
-      <input id="title" placeholder="My awesome recipe" type="text" class="form-control" [(ngModel)]="recipe.title">
+<div class="row">
+  <div class="col-md-6"> 
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input id="title" placeholder="My awesome recipe" type="text" class="form-control" [(ngModel)]="recipe.title">
+    </div>
+  </div>
+
+  <div class="col-md-6">    
+    <div class="form-group">
+      <label for="prep_time">Prep Time</label>
+      <input id="prep_time" type="text" class="form-control" placeholder="Time in Minutes" [(ngModel)]="recipe.prep_time">
+    </div>
   </div>
 </div>
 
-<div class="col-sm-6">    
-  <div class="form-group">
-    <label for="prep_time">Prep Time</label>
-    <input id="prep_time" type="text" class="form-control" placeholder="Time in Minutes" [(ngModel)]="recipe.prep_time">
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="cook_time">Cook Time</label>
+        <input id="cook_time" type="text" class="form-control" placeholder="Time in Minutes" [(ngModel)]="recipe.cook_time">
+    </div>
+  </div>
+
+
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="url">URL</label>
+      <input id="url" type="text" class="form-control" placeholder="URL" [(ngModel)]="recipe.url">
+    </div>
   </div>
 </div>
 
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label for="category">Category</label>
+      <input id="category" placeholder="Breakfast, Lunch, Dinner, Desert, Heart-burn Inducing, etc." type="text" class="form-control" [(ngModel)]="recipe.category" typeahead="category for category in categories | filter:$viewValue | limitTo:8">
+    </div>
+  </div>
 
-<div class="col-sm-6">
-  <div class="form-group">
-    <label for="cook_time">Cook Time</label>
-      <input id="cook_time" type="text" class="form-control" placeholder="Time in Minutes" [(ngModel)]="recipe.cook_time">
+  <div class="col-sm-6">
+    <label for="rating">Rating</label>
+      <star-rating [(value)]="recipe.rating"></star-rating>
   </div>
 </div>
 
-
-<div class="col-sm-6">
-  <div class="form-group">
-    <label for="url">URL</label>
-    <input id="url" type="text" class="form-control" placeholder="URL" [(ngModel)]="recipe.url">
-  </div>
-</div>
-<div class="col-sm-6">
-  <div class="form-group">
-    <label for="category">Category</label>
-    <input id="category" placeholder="Breakfast, Lunch, Dinner, Desert, Heart-burn Inducing, etc." type="text" class="form-control" [(ngModel)]="recipe.category" typeahead="category for category in categories | filter:$viewValue | limitTo:8">
-  </div>
-</div>
-
-<div class="col-sm-6">
-  <label for="rating">Rating</label>
-    <star-rating [(value)]="recipe.rating"></star-rating>
-</div>
-
-<div class="col-sm-11">
-  <div class="form-group">
-    <label for="instructions">Instructions</label>
-    <textarea id="instructions" class="form-control" placeholder="Tell us how to make this awesome meal..." rows="5" [(ngModel)]="recipe.instructions"></textarea>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label for="instructions">Instructions</label>
+      <textarea id="instructions" class="form-control" placeholder="Tell us how to make this awesome meal..." rows="5" [(ngModel)]="recipe.instructions"></textarea>
+    </div>
   </div>
 </div>
 
@@ -134,13 +147,13 @@
     </tr>
     <tr>
       <td colspan="2">
-        <button type="button" (click)="addIngredient()" class="btn btn-default btn-lg">
+        <button type="button" (click)="addIngredient()" class="btn btn-info">
           <i class="fa fa-plus"></i>
           Add Ingredient
         </button>
       </td>
       <td colspan="2">
-        <button type="button" class="btn btn-default btn-lg" (click)="ingredientsImport()">
+        <button type="button" class="btn btn-secondary" (click)="ingredientsImport()">
           <i class="fa fa-download"></i>
           Ingredient Import
         </button>
