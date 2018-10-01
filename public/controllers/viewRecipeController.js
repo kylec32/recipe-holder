@@ -1,29 +1,29 @@
 (function(){
-	angular.module('recipe-holder').controller('viewRecipeController', function($scope,$http,$location,$routeParams,page,recipeService) {
+	angular.module('recipe-holder').controller('viewRecipeController', function($scope, $http, $location, $routeParams, page, recipeService) {
 		
 		$scope.recipe = {};
 
 		$scope.recipe = recipeService.getRecipe($routeParams.id).
-			success(function(data,status,headers,config) {
+			success(function(data, status, headers, config) {
 				$scope.recipe = data;
 				$scope.recipe.instructions = nl2br($scope.recipe.instructions);
 				page.setTitle($scope.recipe.title);
 			});
 
 		$scope.editRecipe = function(editRecipe){
-			$location.url("/add/"+editRecipe._id);
+			$location.url('/add/' + editRecipe._id);
 		};
 
 	});
 
-	function nl2br(content){
+	function nl2br(content) {
 		var convertedContent = '';
-		if(content) {
-			for(var i=0; i<content.length; i++){
-				if(content.charCodeAt(i) == 10){
-					convertedContent += "<br/>";
+		if (content) {
+			for (var i = 0; i < content.length; i++) {
+				if (content.charCodeAt(i) == 10) {
+					convertedContent += '<br/>';
 				}
-				else{
+				else {
 					convertedContent += content[i];
 				}
 			}
