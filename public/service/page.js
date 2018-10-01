@@ -1,4 +1,4 @@
-(function(){
+(function() {
 	angular.module('recipe-holder').factory('page', function() {
 	   var title = 'default';
 	   return {

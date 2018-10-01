@@ -1,21 +1,21 @@
 (function(){
-	angular.module('recipe-holder').controller('viewRecipesController', function($scope,$http,$location,$log,$modal, page, recipeService, categoryService, searchService, _) {
+	angular.module('recipe-holder').controller('viewRecipesController', function($scope, $http, $location, $log, $modal, page, recipeService, categoryService, searchService, _) {
 
 		$scope.delOption = {};
-		$scope.searchTerm = "";
+		$scope.searchTerm = '';
 
 		$scope.recipes = [];
-		$scope.categories = ["No Filter"];
+		$scope.categories = ['No Filter'];
 
 		$scope.recipes = recipeService.getRecipes();
 		
 		$scope.categories = categoryService.getCategories();
-		$scope.currentCategory = "No Filter"
+		$scope.currentCategory = 'No Filter'
 
 		$scope.filterCategory = function(category) {
 			$scope.recipes = [];
 			$scope.currentCategory = category;
-			if(category == "No Filter") {
+			if (category == 'No Filter') {
 				 $scope.recipes = recipeService.getRecipes();
 			}
 			else {
@@ -27,7 +27,7 @@
 
 		$scope.go = function(recipe) {
 
-			$location.url("/view/"+recipe._id);
+			$location.url('/view/' + recipe._id);
 		};
 
 		$scope.deleteRecipe = function(recipe) {
@@ -37,26 +37,26 @@
 			    animation: true,
 			    templateUrl: 'myModalContent.html',
 			    controller: 'ModalInstanceCtrl',
-			    backdrop: "static"
+			    backdrop: 'static'
 			  });
 
-		    modalInstance.result.then(function (recipe) {
+		    modalInstance.result.then(function(recipe) {
 		    	recipeService.deleteRecipe($scope.delOption._id)
-		    		.success(function(data,status,headers,config) {
-		    			$location.url("/view/");
+		    		.success(function(data, status, headers, config) {
+		    			$location.url('/view/');
 		    		});
 		  	});
 		};
 
 		$scope.search = _.debounce(doSearch, 500);
 
-		function doSearch(){
+		function doSearch() {
 			var searchCriteria = {};
 			searchCriteria.ingredients = $scope.searchTerm.split(',');
 			$scope.recipes = searchService.search(searchCriteria);
 		}
 
-		$scope.open = function (size) {
+		$scope.open = function(size) {
 
 		    var modalInstance = $modal.open({
 		      animation: $scope.animationsEnabled,
@@ -64,15 +64,15 @@
 		      controller: 'ModalInstanceCtrl',
 		      size: size,
 		      resolve: {
-		        items: function () {
+		        items: function() {
 		          return $scope.items;
 		        }
 		      }
 		    });
 
-		    modalInstance.result.then(function (selectedItem) {
+		    modalInstance.result.then(function(selectedItem) {
 		      $scope.selected = selectedItem;
-		    }, function () {
+		    }, function() {
 		      $log.info('Modal dismissed at: ' + new Date());
 		    });
 		  };

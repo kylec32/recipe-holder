@@ -6,7 +6,7 @@ var Recipe = require('../models/Recipe.js');
 
 /* GET /recipes listing. */
 router.get('/', function(req, res, next) {
-  Recipe.find().where("deleted").equals(false).distinct('category',function (err, recipes) {
+  Recipe.find().where('deleted').equals(false).distinct('category', function(err, recipes) {
     if (err) return next(err);
     
     res.json(recipes);

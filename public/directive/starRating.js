@@ -1,5 +1,5 @@
-(function(){
-    angular.module('recipe-holder').directive('starRating', function () {
+(function() {
+    angular.module('recipe-holder').directive('starRating', function() {
         return {
             restrict: 'AE',
             template: '<ul class="rating" ng-class="{readonly: readonly}">' +
@@ -13,9 +13,9 @@
                 onRatingSelected: '&',
                 readonly:'='
             },
-            link: function (scope, elem, attrs) {
+            link: function(scope, elem, attrs) {
 
-                var updateStars = function () {
+                var updateStars = function() {
                     scope.stars = [];
                     for (var i = 0; i < scope.max; i++) {
                         scope.stars.push({
@@ -24,7 +24,7 @@
                     }
                 };
 
-                scope.toggle = function (index) {
+                scope.toggle = function(index) {
                 	if (scope.readonly === undefined || scope.readonly === false){
     	                scope.ratingValue.rating = index + 1;
     	                updateStars();
@@ -34,7 +34,7 @@
                 	}
                 };
 
-                scope.$watch('ratingValue', function (oldVal, newVal) {
+                scope.$watch('ratingValue', function(oldVal, newVal) {
                     if (newVal) {
                         updateStars();
                     }
